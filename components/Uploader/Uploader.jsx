@@ -17,7 +17,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import Dexie from 'dexie';
 
-export const db = new Dexie('upload-queue');
+const db = new Dexie('upload-queue');
 
 db.version(1).stores({
   files: 'id', // Primary key and indexed props
@@ -25,12 +25,6 @@ db.version(1).stores({
 
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginImageEdit)
-
-window.addEventListener("online", (event) => {
-  db.table('files').toArray().then(function (items) {
-
-  });
-});
 
 const saveFileToUploadQueue = (file) => {
   return new Promise((resolve, reject) => {
@@ -102,6 +96,13 @@ export function Welcome() {
 
       setFiles([...files, ...results]);
     });
+
+    window.addEventListener("online", (event) => {
+      db.table('files').toArray().then(function (items) {
+
+      });
+    });
+
   }, []);
 
   return (
