@@ -26,10 +26,9 @@ db.version(1).stores({
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginImageEdit)
 
-addEventListener("online", (event) => {
-
+document.addEventListener("online", (event) => {
   db.table('files').toArray().then(function (items) {
-    debugger;
+    
   });
 });
 
