@@ -118,6 +118,7 @@ export function Welcome() {
               db.table("files").delete(file.id);
             }
           }}
+          maxParallelUploads={30}
           allowMultiple={true}
           maxFiles={90}
           server={
