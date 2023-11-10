@@ -119,7 +119,7 @@ export function Welcome() {
             }
           }}
           allowMultiple={true}
-          maxFiles={30}
+          maxFiles={90}
           server={
             {
               load: (source, load, error, progress, abort, headers) => {
